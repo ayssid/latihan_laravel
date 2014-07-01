@@ -27,6 +27,7 @@
                 @yield('breadcrumb')
             </ul>
             <h1 class="uk-heading-large">@yield('title')</h1>
+                @include('layouts.partials.validation')
                 @yield('content')
             </div>
         </div>

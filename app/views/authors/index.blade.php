@@ -9,7 +9,7 @@
     {{ $title }}
 @stop
 
-{{ Html::buttonAdd() }}
+
 
 @section('breadcrumb')
 <li>Dashboard</li>
@@ -17,7 +17,7 @@
 @stop
 
 @section('content')
-Tambah Author <br>
+{{ Html::buttonAdd() }} <br>
 {{
   Datatable::table()
   ->addColumn('id', 'nama', '')
