@@ -1,0 +1,1 @@
+/home/flightmon/projects/larapus/app/views/authors/edit.blade.php
