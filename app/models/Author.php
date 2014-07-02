@@ -1,13 +1,13 @@
 <?php
 
-class Author extends \Eloquent {
+class Author extends BaseModel {
 
     protected $table = 'authors';
 
 
-    // Add your validation rules here
+        // Add your validation rules here
 	public static $rules = [
-		'name' => 'required|unique:authors'
+		'name' => 'required|unique:authors,name,:id'
 	];
 
 	// Don't forget to fill this array
