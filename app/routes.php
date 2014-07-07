@@ -27,6 +27,7 @@ Route::get('logout', 'HomeController@logout');
 Route::group(array('before' => 'auth'), function(){
    Route::get('dashboard', 'HomeController@dashboard');
    Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
-       Route::resource('authors', 'AuthorsController');       
+       Route::resource('authors', 'AuthorsController');  
+       Route::resource('books', 'BooksController');
    });
 });

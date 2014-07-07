@@ -11352,6 +11352,18 @@ namespace {
 		 }
 
 		/**
+		 * Check if a route with the given name exists.
+		 *
+		 * @param string  $name
+		 * @return bool
+		 * @static 
+		 */
+		 public static function has($name){
+			//Method inherited from \Illuminate\Routing\Router
+			return \Illuminate\Routing\Router::has($name);
+		 }
+
+		/**
 		 * Get the current route name.
 		 *
 		 * @return string|null
@@ -13658,6 +13670,54 @@ namespace {
 		 public static function __call($method, $parameters){
 			//Method inherited from \Cartalyst\Sentry\Sentry
 			return \Cartalyst\Sentry\Sentry::__call($method, $parameters);
+		 }
+
+	}
+	class Datatable extends \Chumper\Datatable\Facades\DatatableFacade{
+		/**
+		 * 
+		 *
+		 * @param $query
+		 * @return QueryEngine
+		 * @static 
+		 */
+		 public static function query($query){
+			//Method inherited from \Chumper\Datatable\Datatable
+			return \Chumper\Datatable\Datatable::query($query);
+		 }
+
+		/**
+		 * 
+		 *
+		 * @param $collection
+		 * @return CollectionEngine
+		 * @static 
+		 */
+		 public static function collection($collection){
+			//Method inherited from \Chumper\Datatable\Datatable
+			return \Chumper\Datatable\Datatable::collection($collection);
+		 }
+
+		/**
+		 * 
+		 *
+		 * @return Table
+		 * @static 
+		 */
+		 public static function table(){
+			//Method inherited from \Chumper\Datatable\Datatable
+			return \Chumper\Datatable\Datatable::table();
+		 }
+
+		/**
+		 * 
+		 *
+		 * @return bool True if the plugin should handle this request, false otherwise
+		 * @static 
+		 */
+		 public static function shouldHandle(){
+			//Method inherited from \Chumper\Datatable\Datatable
+			return \Chumper\Datatable\Datatable::shouldHandle();
 		 }
 
 	}

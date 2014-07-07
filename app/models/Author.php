@@ -2,7 +2,7 @@
 
 class Author extends BaseModel {
 
-    protected $table = 'authors';
+        protected $table = 'authors';
 
 
         // Add your validation rules here
@@ -12,5 +12,11 @@ class Author extends BaseModel {
 
 	// Don't forget to fill this array
 	protected $fillable = ['name'];
+        
+        
+        public function Books()
+        {
+            return $this->hasMany('Book');
+        }
 
 }

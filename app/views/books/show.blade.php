@@ -1,0 +1,1 @@
+/home/flightmon/projects/larapus/app/views/books/show.blade.php

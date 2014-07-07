@@ -11,7 +11,8 @@
                 "way/generators" : "2.6.*",
                 "barryvdh/laravel-ide-helper" : "1.*",
                 "datatables/datatables" : "1.10.0",
-                "chumper/datatable" : "2.*"
+                "chumper/datatable" : "2.*",
+                "ivaynberg/select2" : "3.*"
 	},
 	"autoload": {
 		"classmap": [
