@@ -18,5 +18,16 @@ class Book extends BaseModel {
     {
         return $this->belongsTo('Author');
     }
+    
+    public function users()
+    {
+        return $this->belongsToMany('User')->withPivot('returned')->withTimeStamps();
+    }
+    
+    public function borrow()
+    {
+        $user = Sentry::getUser();
+        return $this->users()->attach($user);
+    }
 
 }

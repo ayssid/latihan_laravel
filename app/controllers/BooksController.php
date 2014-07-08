@@ -2,7 +2,12 @@
 
 class BooksController extends \BaseController {
 
-	/**
+    
+        public function __construct() {
+            $this->beforeFilter('regular', array('only' => array('borrow')));
+        }
+
+        /**
 	 * Display a listing of books
 	 *
 	 * @return Response
@@ -17,7 +22,7 @@ class BooksController extends \BaseController {
                                 return $model->author->name;
                             })
                             ->addColumn('', function($model){
-                                $html = '<a href="'.route('admin.books.edit', ['books'=>$model->id]).'" class="uk-button uk-button-small uk-button-link" }">edit</a> ';
+                                $html = '<a href="'.route('admin.books.edit', ['books'=>$model->id]).'" class="uk-button uk-button-small uk-button-link">edit</a> ';
                                 $html .= Form::open(array('url' => route('admin.books.destroy', ['authors'=>$model->id]), 'method'=>'delete', 'class'=>'uk-display-inline'));
                                     $html .= Form::submit('delete', array('class' => 'uk-button uk-button-small'));
                                 $html .= Form::close();
@@ -122,5 +127,35 @@ class BooksController extends \BaseController {
 
 		return Redirect::route('admin.books.index')->with('successMessage', "Berhasil Menghapus");
 	}
+        
+        
+        /**
+         * Borrow book using login id
+         * 
+         * @param type $id
+         * @return Response
+         */
+        public function borrow($id)
+        {
+            $book = Book::findOrFail($id);
+            $book->borrow();
+            return Redirect::back()->with('successMessage', "Berhasil meminjam $book->title");
+        }
+        
+        
+        public function borrowDataTable()
+        {
+            return Datatable::collection(Book::with('author')->get())
+                    ->showColumns('id', 'title', 'amount')
+                    ->addColumn('author', function($model){
+                        return $model->author->name;
+                    })
+                    ->addColumn('', function($model){
+                        return link_to_route('books.borrow', 'Pinjam', ['book' => $model->id]);
+                    })
+                    ->searchColumns('title', 'amount', 'author')
+                    ->orderColumns('title', 'amount', 'author')
+                    ->make();
+        }
 
 }

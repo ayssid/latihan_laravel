@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="{{ asset('packages/uikit/css/uikit.almost-flat.min.css') }}" />
         <script src="{{ asset('components/jquery/jquery.min.js') }}" ></script>
         <script src="{{ asset('packages/js/uikit.min.js') }}"></script>
+        @yield('asset')
     </head>
 
     <body>

@@ -11,12 +11,22 @@ class GuestController extends BaseController
     
     public function index()
     {
-        return View::make('guest.index');
+        if(Sentry::check())
+        {
+            return Redirect::to('dashboard');
+        }
+        return View::make('guest.index')->withTitle('Daftar Buku');
     }
 
 
     public function login()
     {
+        if(Sentry::check())
+        {
+            Session::reflash();
+            return Redirect::to('dashboard');
+        }
+        
         return View::make('guest.login');
     }
     

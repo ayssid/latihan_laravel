@@ -1,10 +1,13 @@
-@extends('layouts.default')
+@extends('layouts.master')
 
 @section('asset')
     @include('layouts.partials.datatable')
 @stop
 
+@section('title')
+    {{ $title }}
+@stop
+
 @section('content')
-    <h1 class='uk-heading-large'>{{ $title }}</h1>
     @include('books._borrowDatatable')
 @stop

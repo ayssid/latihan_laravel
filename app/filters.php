@@ -64,6 +64,17 @@ Route::filter('admin', function()
     }
 });
 
+Route::filter('regular', function(){
+   $user = Sentry::getUser();
+   
+   $regular = Sentry::findGroupByName('Regular');
+   
+   if(!$user->inGroup($regular))
+   {
+       return Redirect::to('dashboard')->with('errorMessage', 'Hanya user regular yang diizinkan mengakses fitur tersebut.');
+   }
+});
+
 
 Route::filter('auth.basic', function()
 {
